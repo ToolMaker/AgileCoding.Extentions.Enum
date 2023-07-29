@@ -13,18 +13,32 @@
             return (EnumType)Enum.Parse(enumType.GetType(), stringValue, true);
         }
 
+        public static EnumType SetWithStringValue<EnumType, IExceptionType>(this EnumType enumType, string stringValue, string errormessage = null)
+            where EnumType : System.Enum
+             where IExceptionType : Exception
+        {
+            if (string.IsNullOrEmpty(errormessage))
+            {
+                errormessage = $"Enum type {nameof(EnumType)} does not contain the enum value {stringValue}";
+            }
+
+            try
+            {
+                return (EnumType)Enum.Parse(enumType.GetType(), stringValue, true);
+            }
+            catch (Exception)
+            {
+                throw (IExceptionType)Activator.CreateInstance(typeof(IExceptionType), errormessage);
+            }
+        }
+
         public static bool ValidateEnumEqualToAny<TEnum, IExceptionType>(this TEnum enumType, IEnumerable<TEnum> enumValues, string errormessage = null)
-            where TEnum : struct
+            where TEnum : System.Enum
             where IExceptionType : Exception
         {
             if (string.IsNullOrEmpty(errormessage))
             {
                 errormessage = $"Enum type {nameof(TEnum)} was not equal to any of the following values {string.Join(",", enumValues)}";
-            }
-
-            if (!typeof(TEnum).IsEnum)
-            {
-                throw new ArgumentException("ValidatEnumEqualTo requires a enum in the TEnum parameter");
             }
 
             if (enumValues.Contains(enumType))
