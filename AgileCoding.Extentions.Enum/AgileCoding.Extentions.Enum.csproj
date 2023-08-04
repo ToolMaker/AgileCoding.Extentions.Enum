@@ -12,26 +12,45 @@
     <RepositoryUrl>https://github.com/ToolMaker/AgileCoding.Extentions.Enum</RepositoryUrl>
     <PackageReleaseNotes>moving to Core</PackageReleaseNotes>
     <PackAsTool>True</PackAsTool>
-	<VersionPrefix>1.0.4</VersionPrefix>
-    <AssemblyVersion>1.0.0.4</AssemblyVersion>
-    <FileVersion>1.0.0.4</FileVersion>
+	<VersionPrefix>2.0.4</VersionPrefix>
+    <AssemblyVersion>2.0.5</AssemblyVersion>
+    <FileVersion>2.0.5</FileVersion>
     <IncludeSymbols>True</IncludeSymbols>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-    <Title>Some extentions on Enums</Title>
+    <Title>Extensions related to Enums</Title>
     <Description>This library will expose some extentions on enums to help and make your code more readable</Description>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
+	<PackageReadmeFile>readme.md</PackageReadmeFile>
+	<SignAssembly>False</SignAssembly>
+	<Version>2.0.5</Version>
+	<RepositoryType>https://github.com/ToolMaker/AgileCoding.Extentions.Enum</RepositoryType>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	  <!--PackageLicenseFile>LICENSE.txt</PackageLicenseFile-->
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+  </PropertyGroup>
+
   <ItemGroup>
-	  <None Include="README.md">
+	  <None Include="readme.md">
 		  <Pack>True</Pack>
-		  <PackagePath>.</PackagePath>
+		  <PackagePath>\</PackagePath>
 	  </None>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Properties\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
